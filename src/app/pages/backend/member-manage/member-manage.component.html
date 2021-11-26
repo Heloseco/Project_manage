@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">DataTable with default features</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="wrapper">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table  class="table table-bordered table-striped dataTable">
+        <thead>
+          <tr>
+            <th class="thead">Name</th>
+            <th class="thead">Email</th>
+            <th class="thead">Platform(s)</th>
+            <th class="thead">Engine version</th>
+            <th class="thead">CSS grade</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of info"
+        [ngClass]="{'bg-gray': item.status == false}">
+        <td class="tbody">{{item.fullname}}</td>
+        <td class="tbody">{{item.email}}</td>
+        <td class="tbody">{{item.password}}</td>
+        <td class="tbody">{{item.role}}</td>
+        <td class="tbody">{{item.status==false? 'Fired': 'Hired'}}</td>
+        </tr>
+</tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
