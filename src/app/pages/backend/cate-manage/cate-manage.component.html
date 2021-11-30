@@ -1,0 +1,51 @@
+<p>cate-manage works!</p>
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title">Category management</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+    <div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+        <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+        <table  class="table table-bordered table-striped dataTable">
+        <thead>
+        <tr>
+            <th class="thead">ID</th>
+            <th class="thead">Name</th>
+            <th class="thead">Detail</th>
+            <th class = "thead">Status</th>
+            <th class="thead">Delete</th>
+            <th class="thead">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of info"
+        [ngClass]="{'bg-dark': item.status == 'OFF'}">
+        <td class="tbody">{{item.id}}</td>
+        <td class="tbody">{{item.cate_name}}</td>
+        <td class="tbody">{{item.cate_detail}}</td>
+        <td class="tbody">{{item.status=='OFF'? 'Hold': 'Sell'}}</td>
+        <td class="tbody"><button class="btn btn-danger col-12">Hold</button></td>
+        <td class="tbody"><button class="btn btn-warning col-12" [(ngModel)]="item.id" name="getid" ngDefaultControl (click)="ShowID(item.id)">Update</button></td>
+        </tr>
+</tbody>
+        </table>
+        <div class="row col-md-12">
+        <div class="row col-md-10"></div>
+        <div class="row col-2">
+            <button class="btn btn-success btn-lg col-xl-8"  (click)="ShowRe()">Add product</button>
+
+        </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<app-register [hidden]="showSelect"></app-register>
+<app-update-member [hidden]="showUpdate"></app-update-member>

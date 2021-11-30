@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">DataTable with default features</h3>
+      <h3 class="card-title">Member management</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -16,24 +16,40 @@
           <table  class="table table-bordered table-striped dataTable">
         <thead>
           <tr>
-            <th class="thead">Name</th>
+            <th class="thead">ID</th>
+            <th class="thead">Firstname</th>
+            <th class="thead">Lastname</th>
             <th class="thead">Email</th>
-            <th class="thead">Platform(s)</th>
-            <th class="thead">Engine version</th>
-            <th class="thead">CSS grade</th>
+            <th class="thead">Password</th>
+            <th class="thead">role</th>
+            <th class="thead">status</th>
+            <th class="thead">Delete</th>
+            <th class="thead">Update</th>
           </tr>
         </thead>
         <tbody>
         <tr *ngFor="let item of info"
-        [ngClass]="{'bg-gray': item.status == false}">
-        <td class="tbody">{{item.fullname}}</td>
-        <td class="tbody">{{item.email}}</td>
-        <td class="tbody">{{item.password}}</td>
+        [ngClass]="{'bg-dark': item.status == 'OFF'}">
+        <td class="tbody">{{item.id}}</td>
+        <td class="tbody" >{{item.fname}}</td>
+        <td class="tbody" >{{item.lname}}</td>
+        <td class="tbody" >{{item.email}}</td>
+        <td class="tbody" >{{item.password}}</td>
         <td class="tbody">{{item.role}}</td>
-        <td class="tbody">{{item.status==false? 'Fired': 'Hired'}}</td>
+        <td class="tbody">{{item.status=='OFF'? 'Fired': 'Hired'}}</td>
+        <td class="tbody"><button class="btn btn-danger col-12">Resign</button></td>
+        <td class="tbody"><button class="btn btn-warning col-12" [(ngModel)]="item.id" name="getid" ngDefaultControl (click)="ShowID(item.id)">Update</button></td>
         </tr>
 </tbody>
         </table>
+        <div class="row col-md-12">
+        <div class="row col-md-10"></div>
+          <div class="row col-2">
+            <button class="btn btn-success btn-lg col-xl-8"  (click)="ShowRe()">Register</button>
+  
+          </div>
+        </div>
     </div>
     <!-- /.card-body -->
   </div>
+  <app-register [hidden]="showSelect"></app-register>

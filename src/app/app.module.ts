@@ -14,10 +14,16 @@ import { DashboardComponent } from './pages/backend/dashboard/dashboard.componen
 import { ProductComponent } from './pages/backend/product/product.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { LoginComponent } from './pages/backend/login/login.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './pages/backend/register/register.component';
 import { MemberManageComponent } from './pages/backend/member-manage/member-manage.component';
+import { UpdateMemberComponent } from './pages/backend/update-member/update-member.component';
+import { ProductManageComponent } from './pages/backend/product-manage/product-manage.component';
+import { ProductAddComponent } from './pages/backend/product-add/product-add.component';
+import { ProductUpdateComponent } from './pages/backend/product-update/product-update.component';
+import { CateManageComponent } from './pages/backend/cate-manage/cate-manage.component';
+import { CateAddComponent } from './pages/backend/cate-add/cate-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +40,13 @@ import { MemberManageComponent } from './pages/backend/member-manage/member-mana
     PagenotfoundComponent,
     LoginComponent,
     RegisterComponent,
-    MemberManageComponent
+    MemberManageComponent,
+    UpdateMemberComponent,
+    ProductManageComponent,
+    ProductAddComponent,
+    ProductUpdateComponent,
+    CateManageComponent,
+    CateAddComponent
   ],
   imports: [
     BrowserModule,

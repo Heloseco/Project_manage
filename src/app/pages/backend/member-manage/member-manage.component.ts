@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -10,18 +10,19 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class MemberManageComponent implements OnInit {
   info:any[]=[];
+  showSelect = true;
+  showUpdate = true;
+  editdata:any;
   constructor(
     private router: ActivatedRoute,
     private http:HttpClientModule,
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    private route : Router
     ){
-
     }
-
   ngOnInit(): void {
     this.userService.getmember().subscribe(
       (response) => {
-        console.log(response.data);
         this.info = response.data;
         // this.info.push(data);
         // console.log(this.info[0].data);
@@ -32,7 +33,22 @@ export class MemberManageComponent implements OnInit {
   )
 }
 
-
+ShowRe(){
+  if(this.showSelect==true)
+  {
+  this.showSelect = false;
+  }else{this.showSelect = true;}
 }
 
+
+ShowID(idx:any){
+      this.route.navigate([`backend/member`,idx]);
+    
+    ;
+  
+}
+
+
+
+}
 

@@ -12,12 +12,11 @@ export class UserServiceService {
   getmember()
   {
     return this.http.get<{data:any}>(`${this.url}/getmember`);
-    
   };
 
-  getmemberByid()
+  getmemberByid(id:any)
   {
-    return this.http.get(`${this.url}/getmember/:id`);
+    return this.http.get<{user:any}>(`${this.url}/getmember/${id}`);
   };
 
   addmember(data:any)

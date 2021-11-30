@@ -9,6 +9,20 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getproduct() {
-    return this.http.get(`${this.url}/getproduct`);
+    return this.http.get<{data:any}>(`${this.url}/getproduct`);
   };
+
+  getproductByid()
+  {
+    return this.http.get<{data:any}>(`${this.url}/getproduct/:id`);
+  };
+
+  addproduct(data:any)
+  {
+    return this.http.post(`${this.url}/addproduct`,data);
+  }
+
+  editproduct(edit:any){
+    return this.http.post<{data:any}>(`${this.url}/editproduct`,edit);
+  }
 }

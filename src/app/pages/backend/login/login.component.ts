@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.http.post('http://localhost:3030/member/login', json)
       .subscribe(response => {
         console.log('Success');
-        this.router.navigateByUrl('backend/register');
+        this.router.navigateByUrl('backend/member');
       },error =>{
         console.log(error);
         document.getElementById('log_message')!.textContent = "email/password is incorrect please re-enter";

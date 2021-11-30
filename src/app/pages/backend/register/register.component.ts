@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-register',
@@ -11,16 +12,16 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
     form: FormGroup = new FormGroup({
       fname: new FormControl(''),
-      lame : new FormControl(''),
+      lname : new FormControl(''),
       email: new FormControl(''),
-      role: new FormControl('')
     });
     submitted = false;
 
   constructor(
     private formBuilder: FormBuilder, 
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userService: UserServiceService
     ){ }
 
   //Validators
@@ -28,8 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group(
     {
-      fname: ['', Validators.required],
-      lname: ['', Validators.required],
+      
       email: ['',[Validators.required, Validators.email]],
       password : ["",
       [
@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(40)
       ]
       ],
-      role: ['', Validators.required]
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
     });
     
   }
@@ -62,9 +63,11 @@ onSubmit(): void {
     return;
   }else
   {
-    
+    this.userService.addmember(this.form.value).subscribe((
+      result)=>{
+        console.log(result);
+      })
   }
-
   console.log(JSON.stringify(this.form.value, null,2));
 }
 }

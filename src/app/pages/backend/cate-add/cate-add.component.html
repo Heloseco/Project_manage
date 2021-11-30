@@ -1,0 +1,36 @@
+<body class="iframe-mode">
+    <div class="mx-auto col-12">
+            <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+            
+            <div class="input-group col-md-5 mx-auto mb-3">
+                <span>Name :</span>
+                <input type="text" class="form-control"
+                formControlName="cate_name" 
+                [ngClass]="{ 'is-invalid': submitted && f['cate_name'].errors}" 
+                placeholder="category name">
+            </div>
+
+            <div class="input-group mx-auto col-md-5 mb-3">
+                <span>Price :</span>
+                <input type="text" class="form-control" 
+                formControlName="cate_detail"
+                [ngClass]="{ 'is-invalid': submitted && f['cate_detail'].errors}"
+                placeholder="Price">
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                </div>
+                <span class="col-3"></span>
+                <div class="col-5 mb-2">
+                <button type="submit" class="btn btn-primary btn-block ml-5 ">Register</button>
+                </div>
+            </div>
+            </form>
+    
+            
+    </div>
+    
+    </body>
+    
+    
