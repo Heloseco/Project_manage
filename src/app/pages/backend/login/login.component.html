@@ -1,3 +1,4 @@
+<app-header-backend></app-header-backend>
 <body class="hold-transition login-page bg-light">
   <div class="login-box">
     <!-- /.login-logo -->
@@ -18,7 +19,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
+            <input type="password" (keyup.enter)="Login()" class="form-control" [(ngModel)]="password" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -28,7 +29,7 @@
           <div class="row">
             <!-- /.col -->
             <div class="col-12">
-              <button (click)="Login()" class="btn btn-primary btn-block">Sign In</button>
+              <button (click)="Login()"  class="btn btn-primary btn-block">Sign In</button>
             </div>
             <!-- /.col -->
           </div>
@@ -40,4 +41,3 @@
   </div>
   <!-- /.card -->
   </body>
-  

@@ -12,9 +12,9 @@ export class ProductService {
     return this.http.get<{data:any}>(`${this.url}/getproduct`);
   };
 
-  getproductByid()
+  getproductByid(id:any)
   {
-    return this.http.get<{data:any}>(`${this.url}/getproduct/:id`);
+    return this.http.get<{product:any}>(`${this.url}/getproduct/${id}`);
   };
 
   addproduct(data:any)
@@ -22,7 +22,11 @@ export class ProductService {
     return this.http.post(`${this.url}/addproduct`,data);
   }
 
-  editproduct(edit:any){
-    return this.http.post<{data:any}>(`${this.url}/editproduct`,edit);
+  editproduct(data:any, id:string){
+    return this.http.put(`${this.url}/editproduct/${id}`,data);
+  }
+  
+  change(id:any,status:any){
+    return this.http.put(`${this.url}/changestatus/${id}`,status)
   }
 }

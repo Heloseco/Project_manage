@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-product-manage',
@@ -15,7 +15,9 @@ export class ProductManageComponent implements OnInit {
 
   constructor(private router: ActivatedRoute,
     private http:HttpClientModule,
-    private productservice: ProductService) { }
+    private productservice: ProductService,
+    private route: Router
+    ) { }
 
   ngOnInit(): void {
     this.productservice.getproduct().subscribe((response) => {
@@ -32,21 +34,42 @@ ShowRe(){
 }
 
 
-ShowID($event:any){
+ShowID(idx:any){
+    this.route.navigate(['backend/product',idx])
+}
+
+change(id:any,stat:any){
   
-  if(this.showUpdate==false)
-  {
-  this.showUpdate = true;
-  }
-  else
-  {
-    this.showUpdate = false;
-    // this.productservice.getproductByid($event).subscribe((results)=>{
-    //   this.productservice.id = $event;
-    //   this.editdata = results;
-    //   console.log(this.editdata);
-    // })
-    ;
-  }
+  let status = {product_status:stat};
+  console.log(status,id);
+  this.productservice.change(id,status).subscribe(()=>{
+    console.log('hi');
+
+    location.reload();
+  })
 }
 }
+
+
+
+
+
+
+
+
+
+// if(this.showUpdate==false)
+  // {
+  // this.showUpdate = true;
+  // }
+  // else
+  // {
+  //   this.showUpdate = false;
+  //   this.productservice.getproductByid($event).subscribe((results)=>{
+  //     this.productservice.id = $event;
+  //     this.editdata = results;
+  //     console.log(this.editdata);
+  //   })
+  //   ;
+  // }
+// 

@@ -10,12 +10,14 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./update-member.component.css']
 })
 export class UpdateMemberComponent implements OnInit {
+
   form: FormGroup = new FormGroup({
     fname: new FormControl(''),
     lname : new FormControl(''),
     email: new FormControl(''),
     password: new FormControl('')
   });
+  
   submitted = false;
   fake:any;
   email:any;
@@ -34,7 +36,12 @@ export class UpdateMemberComponent implements OnInit {
     let id =  this.route.snapshot.paramMap.get('id');
     this.userService.getmemberByid(id).subscribe((results)=>{
         this.fake= results.user;
-
+        this.form.setValue({
+          email : this.fake.email,
+          password: this.fake.password,
+          fname: this.fake.fname,
+          lname: this.fake.lname
+        });
       });
     this.form = this.formBuilder.group(
       {
@@ -61,6 +68,7 @@ export class UpdateMemberComponent implements OnInit {
     this.submitted = true;
   
     if(this.form.invalid){
+      this.router.navigate(['/backend/member']);
       return;
     }else
     {

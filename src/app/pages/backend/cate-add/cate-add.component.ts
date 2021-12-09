@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {CategoryService} from './../../../services/category.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cate-add',
@@ -19,7 +20,8 @@ export class CateAddComponent implements OnInit {
 
   constructor(
     private formsBuilder : FormBuilder,
-    private categoryservice: CategoryService
+    private categoryservice: CategoryService,
+    private router : Router
     ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,8 @@ export class CateAddComponent implements OnInit {
     {
       this.categoryservice.addcategory(this.form.value).subscribe((results)=>
       {
-      console.log(results)
+      console.log(results);
+      location.reload();
     })
     }
     console.log(JSON.stringify(this.form.value, null,2));

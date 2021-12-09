@@ -16,41 +16,39 @@
             <table  class="table table-bordered table-striped dataTable">
             <thead>
             <tr>
-                <th class="thead">ID</th>
-                <th class="thead">Name</th>
-                <th class="thead">Price</th>
-                <th class="thead">Amount</th>
-                <th class="thead">detail</th>
-                <th class="thead">weight</th>
+                <th class = "thead">ID</th>
+                <th class = "thead">Name</th>
+                <th class = "thead">Price</th>
+                <th class = "thead">Amount</th>
+                <th class = "thead">detail</th>
+                <th class = "thead">weight</th>
                 <th class = "thead">Status</th>
-                <th class="thead">Delete</th>
-                <th class="thead">Update</th>
+                <th class = "thead">Delete</th>
+                <th class = "thead">Update</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let item of info"
-            [ngClass]="{'bg-dark': item.status == 'OFF'}">
+            [ngClass]="{'bg-dark': item.product_status == 'OFF'}">
             <td class="tbody">{{item.id}}</td>
             <td class="tbody">{{item.product_name}}</td>
             <td class="tbody">{{item.product_price}}</td>
             <td class="tbody">{{item.product_amount}}</td>
             <td class="tbody">{{item.product_detail}}</td>
-            <td class="tbody">{{item.product_weight}}</td>
-            <td class="tbody">{{item.status=='OFF'? 'Hold': 'Sell'}}</td>
-            <td class="tbody"><button class="btn btn-danger col-12">Hold</button></td>
+            <td class="tbody"><img src="http://localhost:3030/images/images_product/{{item.product_image}}" style="width:70px; height:50px" alt="placeholder"></td>
+            <td class="tbody">{{item.product_status=='OFF'? 'Hold': 'Sell'}}</td>
+            <td class="tbody"><button class="btn btn-danger col-12" (click)="change(item.id,item.product_status)">Hold</button></td>
             <td class="tbody"><button class="btn btn-warning col-12" [(ngModel)]="item.id" name="getid" ngDefaultControl (click)="ShowID(item.id)">Update</button></td>
             </tr>
     </tbody>
             </table>
-            <div class="row col-md-12">
-            <div class="row col-md-10"></div>
-            <div class="row col-2">
-                <button class="btn btn-success btn-lg col-xl-8"  (click)="ShowRe()">Add product</button>
-    
-            </div>
-            </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success"  (click)="ShowRe()">Add product</a>
+                </li>
+            </ul>
         </div>
         <!-- /.card-body -->
     </div>
-    <app-register [hidden]="showSelect"></app-register>
+    <app-product-add [hidden]="showSelect"></app-product-add>
 

@@ -7,14 +7,14 @@
                     <input type="text" class="form-control"
                     formControlName="fname" 
                     [ngClass]="{ 'is-invalid': submitted && f['fname'].errors}" 
-                    placeholder="First name">{{fake.fname}}
+                    placeholder="First name">
                 </div>
         
                 <div class="input-group mx-auto col-md-5 mb-3">
                     <input type="text" class="form-control" 
                     formControlName="lname"
                     [ngClass]="{ 'is-invalid': submitted && f['lname'].errors}"
-                    placeholder="Last name">{{fake.lname}}
+                    placeholder="Last name">
                 </div>
                 
                 
@@ -22,14 +22,14 @@
                     <input type="email" class="form-control"
                     formControlName="email"
                     [ngClass]="{ 'is-invalid': submitted && f['email'].errors}"
-                    placeholder="Email">{{fake.email}}
+                    placeholder="Email">
                     
                 </div>
                 <div class="input-group col-5 ml-5 mb-3 mx-auto">
                     <input type="password" class="form-control"
                     formControlName="password"
                     [ngClass]="{ 'is-invalid': submitted && f['password'].errors}"
-                    placeholder="Password must be at least 8 characters">"{{fake.password}}"
+                    placeholder="Password must be at least 8 characters">
                     
                 </div>
                 <div class="row">
@@ -37,12 +37,10 @@
                     </div>
                     <span class="col-3"></span>
                     <div class="col-5 mb-2">
-                    <button type="submit" class="btn btn-warning btn-block ml-5 ">UPDATE</button>
+                    <button type="submit" class="btn btn-warning btn-block ml-5 " >UPDATE</button>
                     </div>
                 </div>
                 </form>
-        
-                
         </div>
         
         </body>

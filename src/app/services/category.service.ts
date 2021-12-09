@@ -13,9 +13,9 @@ export class CategoryService {
     return this.http.get<{data:any}>(`${this.url}/getcategory`);
   };
 
-  getcategoryByid()
+  getcategoryByid(id:any)
   {
-    return this.http.get<{data:any}>(`${this.url}/getcategory/:id`);
+    return this.http.get<{category:any}>(`${this.url}/getcategory/${id}`);
   };
 
   addcategory(data:any)
@@ -23,5 +23,8 @@ export class CategoryService {
     return this.http.post(`${this.url}/addcategory`,data);
   }
 
+  editcategory(data:any, id:string){
+    return this.http.put(`${this.url}/editcategory/${id}`,data);
+  }
 
 }

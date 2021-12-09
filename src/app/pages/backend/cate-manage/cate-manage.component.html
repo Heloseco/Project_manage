@@ -37,15 +37,12 @@
         </tr>
 </tbody>
         </table>
-        <div class="row col-md-12">
-        <div class="row col-md-10"></div>
-        <div class="row col-2">
-            <button class="btn btn-success btn-lg col-xl-8"  (click)="ShowRe()">Add product</button>
-
-        </div>
-        </div>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link btn btn-success"  (click)="ShowRe()">add category</a>
+            </li>
+        </ul>
     </div>
     <!-- /.card-body -->
 </div>
-<app-register [hidden]="showSelect"></app-register>
-<app-update-member [hidden]="showUpdate"></app-update-member>
+<app-cate-add [hidden]="showSelect"></app-cate-add>

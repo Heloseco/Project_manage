@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,7 +18,8 @@ export class CateManageComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private http: HttpClientModule,
-    private categoryservice: CategoryService
+    private categoryservice: CategoryService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,16 +35,9 @@ export class CateManageComponent implements OnInit {
     }else{this.showSelect = true;}
   }
   
-  ShowID($event:any){
-  
-    if(this.showUpdate==false)
-    {
-    this.showUpdate = true;
-    }
-    else
-    {
-      this.showUpdate = false;
-    }
+  ShowID(idx:any){
+    
+    this.route.navigate(['backend/category',idx])
   }
 }
   

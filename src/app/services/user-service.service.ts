@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
+  
   url="http://localhost:3030/member";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router: Router) { }
 
   getmember()
   {
@@ -24,4 +26,7 @@ export class UserServiceService {
     return this.http.post(`${this.url}/addmember`,data);
   }
 
+  resign(id:any,status:any){
+    return this.http.put(`${this.url}/changestatus/${id}`,status)
+  }
 }

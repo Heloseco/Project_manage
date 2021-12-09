@@ -4,6 +4,7 @@ import { BackendLayoutComponent } from './layouts/backend-layout/backend-layout.
 import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layout.component';
 import { CateAddComponent } from './pages/backend/cate-add/cate-add.component';
 import { CateManageComponent } from './pages/backend/cate-manage/cate-manage.component';
+import { CateUpdateComponent } from './pages/backend/cate-update/cate-update.component';
 import { DashboardComponent } from './pages/backend/dashboard/dashboard.component';
 import { LoginComponent } from './pages/backend/login/login.component';
 import { MemberManageComponent } from './pages/backend/member-manage/member-manage.component';
@@ -15,18 +16,22 @@ import { RegisterComponent } from './pages/backend/register/register.component';
 import { UpdateMemberComponent } from './pages/backend/update-member/update-member.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { AuthService } from './services/auth.service';
+import { AuthguardGuard } from './authguard.guard';
 
 
 const routes: Routes = [
   {
+    path:'login',
+    component:LoginComponent,
+  },
+  {
+    
     path:'backend',
+    canActivate: [AuthguardGuard],
+    canActivateChild: [AuthguardGuard],
     component:BackendLayoutComponent,
     children: [
-      {
-        path:'login',
-        component:LoginComponent
-      },
-
       {
         path:'dashboard',
         component: DashboardComponent,
@@ -59,7 +64,7 @@ const routes: Routes = [
         component: ProductAddComponent,
       },
       {
-        path:'updateproduct',
+        path:'product/:id',
         component: ProductUpdateComponent
       },
       {
@@ -73,6 +78,10 @@ const routes: Routes = [
       {
         path:"member/:id",
         component: UpdateMemberComponent
+      },
+      {
+        path:"category/:id",
+        component: CateUpdateComponent
       }
     ]
   },

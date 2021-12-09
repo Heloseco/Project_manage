@@ -13,6 +13,7 @@ export class MemberManageComponent implements OnInit {
   showSelect = true;
   showUpdate = true;
   editdata:any;
+ 
   constructor(
     private router: ActivatedRoute,
     private http:HttpClientModule,
@@ -24,6 +25,7 @@ export class MemberManageComponent implements OnInit {
     this.userService.getmember().subscribe(
       (response) => {
         this.info = response.data;
+      
         // this.info.push(data);
         // console.log(this.info[0].data);
         // for(let i=0;i<=this.info[0].data.lenght;i++) {
@@ -40,14 +42,26 @@ ShowRe(){
   }else{this.showSelect = true;}
 }
 
+passData(data :any){
+  console.log("PAss");
+  console.log(data);  
+}
+
 
 ShowID(idx:any){
       this.route.navigate([`backend/member`,idx]);
-    
-    ;
-  
 }
 
+ChangeStatus(id:any,stat:any){
+  console.log(id,stat)
+  let status = {status:stat}
+  console.log(status);
+  this.userService.resign(id,status).subscribe(()=>{
+    console.log("succ");
+    location.reload();
+  });
+
+}
 
 
 }

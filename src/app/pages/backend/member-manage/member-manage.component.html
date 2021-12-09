@@ -37,18 +37,16 @@
         <td class="tbody" >{{item.password}}</td>
         <td class="tbody">{{item.role}}</td>
         <td class="tbody">{{item.status=='OFF'? 'Fired': 'Hired'}}</td>
-        <td class="tbody"><button class="btn btn-danger col-12">Resign</button></td>
-        <td class="tbody"><button class="btn btn-warning col-12" [(ngModel)]="item.id" name="getid" ngDefaultControl (click)="ShowID(item.id)">Update</button></td>
+        <td class="tbody"><button class="btn btn-danger col-12" (click)="ChangeStatus(item.id,item.status)">Resign</button></td>
+        <td class="tbody"><button class="btn btn-warning col-12" [(ngModel)]="item.id" name="getid" ngDefaultControl (click)="ShowID(item.id)"   (click)="passData(item)">Update</button></td>
         </tr>
 </tbody>
         </table>
-        <div class="row col-md-12">
-        <div class="row col-md-10"></div>
-          <div class="row col-2">
-            <button class="btn btn-success btn-lg col-xl-8"  (click)="ShowRe()">Register</button>
-  
-          </div>
-        </div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link btn btn-success"  (click)="ShowRe()">Register</a>
+          </li>
+        </ul>
     </div>
     <!-- /.card-body -->
   </div>

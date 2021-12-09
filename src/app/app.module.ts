@@ -24,6 +24,9 @@ import { ProductAddComponent } from './pages/backend/product-add/product-add.com
 import { ProductUpdateComponent } from './pages/backend/product-update/product-update.component';
 import { CateManageComponent } from './pages/backend/cate-manage/cate-manage.component';
 import { CateAddComponent } from './pages/backend/cate-add/cate-add.component';
+import { CateUpdateComponent } from './pages/backend/cate-update/cate-update.component';
+import { AuthService } from './services/auth.service';
+import { AuthguardGuard } from './authguard.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,8 @@ import { CateAddComponent } from './pages/backend/cate-add/cate-add.component';
     ProductAddComponent,
     ProductUpdateComponent,
     CateManageComponent,
-    CateAddComponent
+    CateAddComponent,
+    CateUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +59,9 @@ import { CateAddComponent } from './pages/backend/cate-add/cate-add.component';
     HttpClientModule,
     ReactiveFormsModule,
 
+
   ],
-  providers: [],
+  providers: [AuthService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

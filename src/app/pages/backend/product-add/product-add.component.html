@@ -39,9 +39,17 @@
                 <div class="input-group col-5 ml-5 mb-3 mx-auto">
                     <span>Image :</span>
                     <input type="file" class="form-control"
+                    (change)="OnChange($event)"
+                    >
+                </div>
+
+                <div class="input-group col-5 ml-5 mb-3 mx-auto">
+                    <span>Image :</span>
+                    <input type="string" class="form-control"
                     formControlName="product_image"
                     [ngClass]="{ 'is-invalid': submitted && f['product_image'].errors}"
-                    placeholder="Image">
+                    readonly="true"
+                    >
                 </div>
 
                 <div class="input-group col-5 ml-5 mb-3 mx-auto">
